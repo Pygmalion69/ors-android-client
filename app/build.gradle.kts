@@ -122,8 +122,8 @@ publishing {
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/Pygmalion69/ors-android-client")
             credentials {
-                username = System.getenv("GPR_USER") ?: (findProperty("gpr.user") as String?)
-                password = System.getenv("GPR_TOKEN") ?: (findProperty("gpr.token") as String?)
+                username = System.getenv("GPR_USER") //?: (findProperty("gpr.user") as String?)
+                password = System.getenv("GPR_TOKEN") //?: (findProperty("gpr.token") as String?)
             }
         }
         // mavenLocal()  // uncomment for local testing
