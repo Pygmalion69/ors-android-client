@@ -1,17 +1,42 @@
-*.iml
-.gradle
-/local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
+# OS / Logs
 .DS_Store
-/build
-/captures
-.externalNativeBuild
-.cxx
+*.log
+
+# IntelliJ / Android Studio
+*.iml
+.idea/
+
+# Gradle / Build outputs
+.gradle/
+build/
+**/build/
+
+# Android Studio generated
+captures/
+.externalNativeBuild/
+.cxx/
+
+# App artifacts
+*.apk
+*.aab
+output-metadata.json
+
+# Local config (SDK path etc.)
 local.properties
-app/src/main/res/values/api_key.xml 
-/.kotlin/errors
+/local.properties
+
+# Secrets / API keys
+google-services.json
+app/src/main/res/values/api_key.xml
+
+# Keystore files
+*.jks
+*.keystore
+
+# Android Profiling
+*.hprof
+
+# Kotlin (misc)
+.kotlin/
+.kotlin/errors
+
