@@ -65,3 +65,7 @@ val route = with(helper) {
     )
 }
 ```
+
+## API Reference
+
+Complete an concise technical documentation: [API Reference](https://pygmalion.nitri.org/docs/ors-android-client/).
