@@ -10,6 +10,7 @@ import org.junit.Assert.assertTrue
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.nitri.ors.helper.SnapHelper
+import org.nitri.ors.internal.DefaultOrsClient
 
 @RunWith(AndroidJUnit4::class)
 class SnapInstrumentedTest {

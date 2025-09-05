@@ -1,6 +1,8 @@
-package org.nitri.ors
+package org.nitri.ors.internal
 
 import android.content.Context
+import org.nitri.ors.OrsClient
+import org.nitri.ors.Profile
 import org.nitri.ors.domain.elevation.ElevationLineRequest
 import org.nitri.ors.domain.elevation.ElevationLineResponse
 import org.nitri.ors.domain.elevation.ElevationPointRequest
@@ -23,10 +25,10 @@ import org.nitri.ors.domain.route.RouteResponse
 import org.nitri.ors.domain.snap.SnapGeoJsonResponse
 import org.nitri.ors.domain.snap.SnapRequest
 import org.nitri.ors.domain.snap.SnapResponse
-import org.nitri.ors.restclient.OpenRouteServiceRestClient
+import org.nitri.ors.internal.restclient.OpenRouteServiceRestClient
 
 /**
- * Default implementation of [OrsClient] using the Retrofit based
+ * Default implementation of [org.nitri.ors.OrsClient] using the Retrofit based
  * [OpenRouteServiceRestClient].
  */
 class DefaultOrsClient(apiKey: String, context: Context) : OrsClient {

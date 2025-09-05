@@ -1,4 +1,4 @@
-package org.nitri.ors.restclient
+package org.nitri.ors.internal.restclient
 
 import android.content.Context
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
@@ -7,7 +7,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.create
-import org.nitri.ors.api.OpenRouteServiceApi
+import org.nitri.ors.internal.api.OpenRouteServiceApi
 import okhttp3.MediaType.Companion.toMediaType
 import java.util.concurrent.TimeUnit
 

@@ -1,4 +1,4 @@
-package org.nitri.ors.api
+package org.nitri.ors.internal.api
 
 import okhttp3.ResponseBody
 import org.nitri.ors.domain.elevation.ElevationLineRequest

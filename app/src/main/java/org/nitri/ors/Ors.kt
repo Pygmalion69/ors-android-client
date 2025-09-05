@@ -1,6 +1,7 @@
 package org.nitri.ors
 
 import android.content.Context
+import org.nitri.ors.internal.DefaultOrsClient
 
 /**
  * Factory for obtaining [OrsClient] instances.

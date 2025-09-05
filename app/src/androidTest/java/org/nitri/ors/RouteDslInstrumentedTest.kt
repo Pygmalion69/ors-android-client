@@ -10,6 +10,7 @@ import org.junit.Assert.assertThrows
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.nitri.ors.domain.route.routeRequest
+import org.nitri.ors.internal.DefaultOrsClient
 
 @RunWith(AndroidJUnit4::class)
 class RouteDslInstrumentedTest {

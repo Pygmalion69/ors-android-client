@@ -11,6 +11,7 @@ import org.junit.runner.RunWith
 import org.nitri.ors.domain.optimization.Job
 import org.nitri.ors.domain.optimization.Vehicle
 import org.nitri.ors.helper.OptimizationHelper
+import org.nitri.ors.internal.DefaultOrsClient
 
 @RunWith(AndroidJUnit4::class)
 class OptimizationInstrumentedTest {

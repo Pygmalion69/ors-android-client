@@ -9,6 +9,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.nitri.ors.domain.route.GeoJsonRouteResponse
 import org.nitri.ors.helper.RouteHelper
+import org.nitri.ors.internal.DefaultOrsClient
 
 @RunWith(AndroidJUnit4::class)
 class RouteInstrumentedTest {
