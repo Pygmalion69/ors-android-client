@@ -1,4 +1,5 @@
-import java.io.ByteArrayOutputStream
+import org.jetbrains.dokka.gradle.DokkaTask
+import org.jetbrains.dokka.DokkaConfiguration.Visibility
 
 plugins {
     id("com.android.library")
@@ -6,6 +7,7 @@ plugins {
     id("org.jetbrains.kotlin.plugin.serialization") version "2.2.10"
     id("kotlin-kapt")
     id("maven-publish")
+    id("org.jetbrains.dokka")
 }
 
 group = "org.nitri.ors"
@@ -55,6 +57,22 @@ android {
     }
 }
 
+tasks.withType<DokkaTask>().configureEach {
+    dokkaSourceSets.configureEach {
+        documentedVisibilities.set(
+            setOf(
+                Visibility.PUBLIC,
+                Visibility.PROTECTED,
+            )
+        )
+
+        perPackageOption {
+            matchingRegex.set(".*internal.*")
+            suppress.set(true)
+        }
+    }
+}
+
 dependencies {
 
     implementation(libs.androidx.core.ktx)
@@ -79,6 +97,7 @@ dependencies {
     androidTestImplementation(libs.androidx.runner)
 
     androidTestImplementation(libs.androidx.rules)
+    dokkaPlugin(libs.android.documentation.plugin)
 }
 
 publishing {

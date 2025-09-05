@@ -1,5 +1,6 @@
 [versions]
 agp = "8.12.2"
+androidDocumentationPlugin = "2.0.0"
 kotlin = "2.2.10"
 coreKtx = "1.17.0"
 junit = "4.13.2"
@@ -16,8 +17,10 @@ monitor = "1.8.0"
 retrofit = "3.0.0"
 retrofit2KotlinxSerializationConverter = "1.0.0"
 runner = "1.7.0"
+dokka = "2.0.0"
 
 [libraries]
+android-documentation-plugin = { module = "org.jetbrains.dokka:android-documentation-plugin", version.ref = "dokka" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-junit-ktx = { module = "androidx.test.ext:junit-ktx", version.ref = "junitVersion" }
 androidx-monitor = { module = "androidx.test:monitor", version.ref = "monitor" }
