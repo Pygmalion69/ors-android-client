@@ -11,7 +11,7 @@ plugins {
 }
 
 group = "org.nitri.ors"
-version = (findProperty("LIB_VERSION") as String?) ?: "0.1.1"
+version = (findProperty("LIB_VERSION") as String?) ?: "0.1.2"
 
 android {
     namespace = "org.nitri.ors"
