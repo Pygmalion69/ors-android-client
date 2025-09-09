@@ -1,10 +1,12 @@
 # ORS Android Client
 
+[![](https://jitpack.io/v/Pygmalion69/ors-android-client.svg)](https://jitpack.io/#Pygmalion69/ors-android-client)
+
 Android client library for the [OpenRouteService](https://openrouteservice.org) APIs.
 
 ## Dependency
 
-The library is published on GitHub Packages.
+The library is published on GitHub Packages:
 
 ```kotlin
 repositories {
@@ -19,6 +21,18 @@ repositories {
 
 dependencies {
     implementation("org.nitri.ors:ors-android-client:<latest-version>")
+}
+```
+
+If you prefer, the library is also available via JitPack:
+
+```kotlin
+repositories {
+    maven { url = uri("https://jitpack.io") }
+}
+
+dependencies {
+    implementation("com.github.Pygmalion69:ors-android-client:<latest-version>")
 }
 ```
 
@@ -68,7 +82,7 @@ val route = with(helper) {
 
 ## API Reference
 
-Complete an concise technical documentation: [API Reference](https://pygmalion.nitri.org/docs/ors-android-client/).
+Complete and concise technical documentation: [API Reference](https://pygmalion.nitri.org/docs/ors-android-client/).
 
 ## Example
 
