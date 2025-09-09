@@ -118,3 +118,8 @@ class Directions(val client: OrsClient, private val profile: String) {
     }
 }
 ```
+
+## Apps
+
+Apps using this library:
+- [OpenTopoMap Viewer](https://github.com/Pygmalion69/OpenTopoMapViewer)
