@@ -1,6 +1,6 @@
 # ORS Android Client
 
-[![](https://jitpack.io/v/Pygmalion69/ors-android-client.svg)](https://jitpack.io/#Pygmalion69/ors-android-client)
+[![JitPack](https://jitpack.io/v/Pygmalion69/ors-android-client.svg)](https://jitpack.io/#Pygmalion69/ors-android-client) [![Release](https://img.shields.io/github/v/release/Pygmalion69/ors-android-client)](https://github.com/Pygmalion69/ors-android-client/releases)
 
 Android client library for the [OpenRouteService](https://openrouteservice.org) APIs.
 
