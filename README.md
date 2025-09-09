@@ -69,3 +69,38 @@ val route = with(helper) {
 ## API Reference
 
 Complete an concise technical documentation: [API Reference](https://pygmalion.nitri.org/docs/ors-android-client/).
+
+## Example
+
+Example code to obtain a GPX using a helper class:
+
+```kotlin
+class Directions(val client: OrsClient, private val profile: String) {
+
+    val routeHelper = RouteHelper()
+
+    fun getRouteGpx(coordinates: List<List<Double>>, language: String, result: RouteGpxResult) {
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val gpxXml = with(routeHelper) { client.getRouteGpx(coordinates, language, profile) }
+                withContext(Dispatchers.Main) {
+                    if (gpxXml.isNotBlank()) {
+                        result.onSuccess(gpxXml)
+                    } else {
+                        result.onError("Empty response body")
+                    }
+                }
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    result.onError("Failed to fetch GPX: ${e.message}")
+                }
+            }
+        }
+    }
+
+    interface RouteGpxResult {
+        fun onSuccess(gpx: String)
+        fun onError(message: String)
+    }
+}
+```
