@@ -141,7 +141,7 @@ interface OpenRouteServiceApi {
     @GET("elevation/point")
     suspend fun getElevationPointSimple(
         @Query("geometry") start: String,  // e.g. "8.681495,49.41461"
-    ): RouteResponse
+    ): ElevationPointResponse
 
     @POST("elevation/point")
     suspend fun getElevationPoint(
