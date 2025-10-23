@@ -1,6 +1,7 @@
 package org.nitri.ors
 
 import kotlinx.coroutines.test.runTest
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito.mock
@@ -51,7 +52,7 @@ class RouteHelperTest {
 
         val result = with(routeHelper) { client.getRoute(start, end, profile) }
 
-        assert(result == expectedResponse)
+        assertEquals(expectedResponse, result)
         verify(client).getRoute(Profile.DRIVING_CAR, expectedRequest)
     }
 }
