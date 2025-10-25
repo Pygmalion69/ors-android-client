@@ -51,7 +51,7 @@ class RouteHelper {
     }
 
     /**
-     * Retrieves a route as GPX for an arbitrary coordinate list.
+     * Retrieves a route as GPX for an arbitrary coordinate list, requiring a language code for localization.
      */
     suspend fun OrsClient.getRouteGpx(
         coordinates: List<List<Double>>,

@@ -1,10 +1,12 @@
 # ORS Android Client
 
+[![JitPack](https://jitpack.io/v/Pygmalion69/ors-android-client.svg)](https://jitpack.io/#Pygmalion69/ors-android-client) [![Release](https://img.shields.io/github/v/release/Pygmalion69/ors-android-client)](https://github.com/Pygmalion69/ors-android-client/releases)
+
 Android client library for the [OpenRouteService](https://openrouteservice.org) APIs.
 
 ## Dependency
 
-The library is published on GitHub Packages.
+The library is published on GitHub Packages:
 
 ```kotlin
 repositories {
@@ -19,6 +21,18 @@ repositories {
 
 dependencies {
     implementation("org.nitri.ors:ors-android-client:<latest-version>")
+}
+```
+
+If you prefer, the library is also available via JitPack:
+
+```kotlin
+repositories {
+    maven { url = uri("https://jitpack.io") }
+}
+
+dependencies {
+    implementation("com.github.Pygmalion69:ors-android-client:<latest-version>")
 }
 ```
 
@@ -68,4 +82,44 @@ val route = with(helper) {
 
 ## API Reference
 
-Complete an concise technical documentation: [API Reference](https://pygmalion.nitri.org/docs/ors-android-client/).
+Complete and concise technical documentation: [API Reference](https://pygmalion.nitri.org/docs/ors-android-client/).
+
+## Example
+
+Example code to obtain a GPX using a helper class:
+
+```kotlin
+class Directions(val client: OrsClient, private val profile: String) {
+
+    val routeHelper = RouteHelper()
+
+    fun getRouteGpx(coordinates: List<List<Double>>, language: String, result: RouteGpxResult) {
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val gpxXml = with(routeHelper) { client.getRouteGpx(coordinates, language, profile) }
+                withContext(Dispatchers.Main) {
+                    if (gpxXml.isNotBlank()) {
+                        result.onSuccess(gpxXml)
+                    } else {
+                        result.onError("Empty response body")
+                    }
+                }
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    result.onError("Failed to fetch GPX: ${e.message}")
+                }
+            }
+        }
+    }
+
+    interface RouteGpxResult {
+        fun onSuccess(gpx: String)
+        fun onError(message: String)
+    }
+}
+```
+
+## Apps
+
+Apps using this library:
+- [OpenTopoMap Viewer](https://github.com/Pygmalion69/OpenTopoMapViewer)
