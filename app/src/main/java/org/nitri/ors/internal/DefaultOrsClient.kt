@@ -51,6 +51,20 @@ class DefaultOrsClient(apiKey: String, context: Context) : OrsClient {
     }
 
     /** @inheritDoc */
+    override suspend fun getRouteGpx(
+        profile: Profile,
+        routeRequest: RouteRequest,
+        includeElevation: Boolean
+    ): String {
+        val resolvedRequest = if (includeElevation) {
+            routeRequest.copy(elevation = true)
+        } else {
+            routeRequest
+        }
+        return api.getRouteGpx(profile.key, resolvedRequest).body()?.string() ?: ""
+    }
+
+    /** @inheritDoc */
     override suspend fun getRouteGeoJson(
         profile: Profile,
         routeRequest: RouteRequest

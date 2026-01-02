@@ -70,6 +70,13 @@ interface OrsClient {
     /** Retrieves the route as GPX. */
     suspend fun getRouteGpx(profile: Profile, routeRequest: RouteRequest): String
 
+    /** Retrieves the route as GPX, optionally adding elevation data. */
+    suspend fun getRouteGpx(
+        profile: Profile,
+        routeRequest: RouteRequest,
+        includeElevation: Boolean
+    ): String
+
     /** Retrieves the route as GeoJSON feature collection. */
     suspend fun getRouteGeoJson(profile: Profile, routeRequest: RouteRequest): GeoJsonRouteResponse
 

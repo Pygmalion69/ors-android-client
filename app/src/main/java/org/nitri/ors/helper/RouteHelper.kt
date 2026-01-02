@@ -51,6 +51,24 @@ class RouteHelper {
     }
 
     /**
+     * Retrieves a route as GPX between two coordinates with optional elevation data.
+     */
+    suspend fun OrsClient.getRouteGpx(
+        start: Pair<Double, Double>,
+        end: Pair<Double, Double>,
+        profile: String,
+        includeElevation: Boolean
+    ): String {
+        val request = RouteRequest(
+            coordinates = listOf(
+                listOf(start.first, start.second),
+                listOf(end.first, end.second)
+            )
+        )
+        return getRouteGpx(profileFromKey(profile), request, includeElevation)
+    }
+
+    /**
      * Retrieves a route as GPX for an arbitrary coordinate list, requiring a language code for localization.
      */
     suspend fun OrsClient.getRouteGpx(
@@ -60,6 +78,19 @@ class RouteHelper {
     ): String {
         val request = RouteRequest(coordinates = coordinates, language = language)
         return getRouteGpx(profileFromKey(profile), request)
+    }
+
+    /**
+     * Retrieves a route as GPX for an arbitrary coordinate list with optional elevation data.
+     */
+    suspend fun OrsClient.getRouteGpx(
+        coordinates: List<List<Double>>,
+        language: String,
+        profile: String,
+        includeElevation: Boolean
+    ): String {
+        val request = RouteRequest(coordinates = coordinates, language = language)
+        return getRouteGpx(profileFromKey(profile), request, includeElevation)
     }
 
     /**
