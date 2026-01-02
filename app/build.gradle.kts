@@ -1,10 +1,11 @@
 import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.dokka.DokkaConfiguration.Visibility
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
-    id("org.jetbrains.kotlin.plugin.serialization") version "2.2.10"
+    id("org.jetbrains.kotlin.plugin.serialization") version "2.3.0"
     id("kotlin-kapt")
     id("maven-publish")
     id("org.jetbrains.dokka")
@@ -38,9 +39,7 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
-    kotlinOptions {
-        jvmTarget = "17"
-    }
+
     testOptions {
         targetSdk = 35
     }
@@ -54,6 +53,14 @@ android {
             withSourcesJar()
             withJavadocJar()
         }
+    }
+}
+
+kotlin {
+    jvmToolchain(17)
+    compilerOptions {
+        jvmTarget.set(JvmTarget.JVM_17)
+        freeCompilerArgs.add("-opt-in=kotlin.RequiresOptIn")
     }
 }
 
