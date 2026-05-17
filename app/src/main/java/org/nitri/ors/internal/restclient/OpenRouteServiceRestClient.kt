@@ -83,7 +83,7 @@ object OpenRouteServiceRestClient {
             .build()
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://api.heigit.org/") // https://ask.openrouteservice.org/t/deprecating-api-openrouteservice-org-in-favour-of-api-heigit-org/7912
+            .baseUrl("https://api.heigit.org/openrouteservice/") // https://ask.openrouteservice.org/t/deprecating-api-openrouteservice-org-in-favour-of-api-heigit-org/7912
             .client(client)
             // Prefer application/json for requests; also support application/geo+json responses
             .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
