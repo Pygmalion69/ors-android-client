@@ -33,65 +33,65 @@ import retrofit2.http.Query
 interface OpenRouteServiceApi {
 
     // Directions
-    @GET("v2/directions/{profile}")
+    @GET("openrouteservice/v2/directions/{profile}")
     suspend fun getRouteSimple(
         @Path("profile") profile: String,
         @Query("start") start: String,  // e.g. "8.681495,49.41461"
         @Query("end") end: String       // e.g. "8.687872,49.420318"
     ): RouteResponse
 
-    @POST("v2/directions/{profile}")
+    @POST("openrouteservice/v2/directions/{profile}")
     suspend fun getRoute(
         @Path("profile") profile: String,
         @Body request: RouteRequest
     ): RouteResponse
 
-    @POST("v2/directions/{profile}/json")
+    @POST("openrouteservice/v2/directions/{profile}/json")
     suspend fun getRouteJson(
         @Path("profile") profile: String,
         @Body request: RouteRequest
     ): RouteResponse
 
-    @POST("v2/directions/{profile}/gpx")
+    @POST("openrouteservice/v2/directions/{profile}/gpx")
     suspend fun getRouteGpx(
         @Path("profile") profile: String,
         @Body request: RouteRequest
     ): Response<ResponseBody>
 
-    @POST("v2/directions/{profile}/geojson")
+    @POST("openrouteservice/v2/directions/{profile}/geojson")
     suspend fun getRouteGeoJson(
         @Path("profile") profile: String,
         @Body request: RouteRequest
     ): GeoJsonRouteResponse
 
     // Export endpoints
-    @POST("v2/export/{profile}")
+    @POST("openrouteservice/v2/export/{profile}")
     suspend fun export(
         @Path("profile") profile: String,
         @Body request: ExportRequest
     ): ExportResponse
 
-    @POST("v2/export/{profile}/json")
+    @POST("openrouteservice/v2/export/{profile}/json")
     suspend fun exportJson(
         @Path("profile") profile: String,
         @Body request: ExportRequest
     ): ExportResponse
 
-    @POST("v2/export/{profile}/topojson")
+    @POST("openrouteservice/v2/export/{profile}/topojson")
     suspend fun exportTopoJson(
         @Path("profile") profile: String,
         @Body request: ExportRequest
     ): TopoJsonExportResponse
 
     // Isochrones endpoint
-    @POST("v2/isochrones/{profile}")
+    @POST("openrouteservice/v2/isochrones/{profile}")
     suspend fun getIsochrones(
         @Path("profile") profile: String,
         @Body request: IsochronesRequest
     ): IsochronesResponse
 
     // Matrix endpoint
-    @POST("v2/matrix/{profile}")
+    @POST("openrouteservice/v2/matrix/{profile}")
     suspend fun getMatrix(
         @Path("profile") profile: String,
         @Body request: MatrixRequest
@@ -99,19 +99,19 @@ interface OpenRouteServiceApi {
 
     // Snapping
 
-    @POST("v2/snap/{profile}")
+    @POST("openrouteservice/v2/snap/{profile}")
     suspend fun getSnap(
         @Path("profile") profile: String,
         @Body request: SnapRequest
     ): SnapResponse
 
-    @POST("v2/snap/{profile}/json")
+    @POST("openrouteservice/v2/snap/{profile}/json")
     suspend fun getSnapJson(
         @Path("profile") profile: String,
         @Body request: SnapRequest
     ): SnapResponse
 
-    @POST("v2/snap/{profile}/geojson")
+    @POST("openrouteservice/v2/snap/{profile}/geojson")
     suspend fun getSnapGeoJson(
         @Path("profile") profile: String,
         @Body request: SnapRequest
@@ -119,38 +119,38 @@ interface OpenRouteServiceApi {
 
     // POIs
 
-    @POST("pois")
+    @POST("openpoiservice/v0/pois")
     suspend fun getPois(
         @Body request: PoisRequest
     ): PoisGeoJsonResponse
 
     // Optimization
 
-    @POST("optimization")
+    @POST("vroom/v0")
     suspend fun getOptimization(
         @Body request: OptimizationRequest
     ): OptimizationResponse
 
     // Elevation
 
-    @POST("elevation/line")
+    @POST("openelevationservice/v0/line")
     suspend fun getElevationLine(
         @Body request: ElevationLineRequest
     ): ElevationLineResponse
 
-    @GET("elevation/point")
+    @GET("openelevationservice/v0/point")
     suspend fun getElevationPointSimple(
         @Query("geometry") start: String,  // e.g. "8.681495,49.41461"
     ): ElevationPointResponse
 
-    @POST("elevation/point")
+    @POST("openelevationservice/v0/point")
     suspend fun getElevationPoint(
         @Body request: ElevationPointRequest
     ): ElevationPointResponse
 
     // Geocode
 
-    @GET("geocode/search")
+    @GET("pelias/v1/search")
     suspend fun geocodeSearch(
         @Query("text") text: String,
 
@@ -182,7 +182,7 @@ interface OpenRouteServiceApi {
         @Query("api_key") apiKey: String
     ): GeocodeSearchResponse
 
-    @GET("geocode/autocomplete")
+    @GET("pelias/v1/autocomplete")
     suspend fun autocomplete(
         @Query("api_key") apiKey: String,
         @Query("text") text: String,
@@ -202,7 +202,7 @@ interface OpenRouteServiceApi {
     ): GeocodeSearchResponse
 
 
-    @GET("geocode/search/structured")
+    @GET("pelias/v1/search/structured")
     suspend fun geocodeStructured(
         @Query("api_key") apiKey: String,
 
@@ -243,7 +243,7 @@ interface OpenRouteServiceApi {
     ): GeocodeSearchResponse
 
 
-    @GET("geocode/reverse")
+    @GET("pelias/v1/reverse")
     suspend fun geocodeReverse(
         @Query("api_key") apiKey: String,
 
