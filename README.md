@@ -80,6 +80,19 @@ val route = with(helper) {
 }
 ```
 
+## Geocoding
+
+```kotlin
+val client = Ors.create(apiKey, context)
+
+val response = client.geocodeAutocomplete(
+    text = "Kleve",
+    focusLon = 6.138,
+    focusLat = 51.789,
+    size = 10
+)
+```
+
 ## API Reference
 
 Complete and concise technical documentation: [API Reference](https://pygmalion.nitri.org/docs/ors-android-client/).

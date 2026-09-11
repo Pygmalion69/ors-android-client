@@ -25,12 +25,10 @@ class GeocodeInstrumentedTest {
     fun testGeocode_search_successful() = runBlocking {
         val context = ApplicationProvider.getApplicationContext<Context>()
         val (client, helper) = create(context)
-        val apiKey = context.getString(R.string.ors_api_key)
 
         val response = with(helper) {
             client.search(
                 text = "Heidelberg",
-                apiKey = apiKey,
                 size = 5
             )
         }
@@ -53,7 +51,6 @@ class GeocodeInstrumentedTest {
     fun testGeocode_reverse_successful() = runBlocking {
         val context = ApplicationProvider.getApplicationContext<Context>()
         val (client, helper) = create(context)
-        val apiKey = context.getString(R.string.ors_api_key)
 
         // Point near Heidelberg, Germany
         val lon = 8.681495
@@ -61,7 +58,6 @@ class GeocodeInstrumentedTest {
 
         val response = with(helper) {
             client.reverse(
-                apiKey = apiKey,
                 lon = lon,
                 lat = lat,
                 size = 5
@@ -80,11 +76,9 @@ class GeocodeInstrumentedTest {
     fun testGeocode_autocomplete_successful() = runBlocking {
         val context = ApplicationProvider.getApplicationContext<Context>()
         val (client, helper) = create(context)
-        val apiKey = context.getString(R.string.ors_api_key)
 
         val response = with(helper) {
             client.autocomplete(
-                apiKey = apiKey,
                 text = "Heidelb",
                 size = 5
             )
@@ -92,5 +86,22 @@ class GeocodeInstrumentedTest {
 
         assertNotNull("Autocomplete response should not be null", response)
         assertTrue("Autocomplete should return suggestions", response.features.isNotEmpty())
+    }
+
+    @Test
+    fun testGeocode_structured_successful() = runBlocking {
+        val context = ApplicationProvider.getApplicationContext<Context>()
+        val (client, helper) = create(context)
+
+        val response = with(helper) {
+            client.structured(
+                locality = "Heidelberg",
+                country = "Germany",
+                size = 5
+            )
+        }
+
+        assertNotNull("Structured response should not be null", response)
+        assertTrue("Structured search should return features", response.features.isNotEmpty())
     }
 }

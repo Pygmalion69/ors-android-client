@@ -15,7 +15,6 @@ class GeocodeHelper {
      */
     suspend fun OrsClient.search(
         text: String,
-        apiKey: String,
         focusLon: Double? = null,
         focusLat: Double? = null,
         rectMinLon: Double? = null,
@@ -33,7 +32,6 @@ class GeocodeHelper {
     ): GeocodeSearchResponse {
         return geocodeSearch(
             text = text,
-            apiKey = apiKey,
             focusLon = focusLon,
             focusLat = focusLat,
             rectMinLon = rectMinLon,
@@ -55,7 +53,6 @@ class GeocodeHelper {
      * Autocomplete search; returns suggestions for a partial query.
      */
     suspend fun OrsClient.autocomplete(
-        apiKey: String,
         text: String,
         focusLon: Double? = null,
         focusLat: Double? = null,
@@ -72,7 +69,6 @@ class GeocodeHelper {
         size: Int? = null,
     ): GeocodeSearchResponse {
         return geocodeAutocomplete(
-            apiKey = apiKey,
             text = text,
             focusLon = focusLon,
             focusLat = focusLat,
@@ -94,7 +90,6 @@ class GeocodeHelper {
      * Structured forward geocoding using address fields.
      */
     suspend fun OrsClient.structured(
-        apiKey: String,
         address: String? = null,
         neighbourhood: String? = null,
         borough: String? = null,
@@ -118,7 +113,6 @@ class GeocodeHelper {
         size: Int? = null,
     ): GeocodeSearchResponse {
         return geocodeStructured(
-            apiKey = apiKey,
             address = address,
             neighbourhood = neighbourhood,
             borough = borough,
@@ -147,7 +141,6 @@ class GeocodeHelper {
      * Reverse geocoding for a point.
      */
     suspend fun OrsClient.reverse(
-        apiKey: String,
         lon: Double,
         lat: Double,
         radiusKm: Double? = null,
@@ -157,7 +150,6 @@ class GeocodeHelper {
         boundaryCountry: String? = null,
     ): GeocodeSearchResponse {
         return geocodeReverse(
-            apiKey = apiKey,
             lon = lon,
             lat = lat,
             radiusKm = radiusKm,

@@ -124,10 +124,12 @@ interface OrsClient {
     suspend fun getElevationPoint(elevationPointRequest: ElevationPointRequest): ElevationPointResponse
 
     // Geocode
-    /** Forward geocoding search endpoint. */
+    /**
+     * Forward geocoding search endpoint.
+     * Uses the API key supplied when creating the [OrsClient].
+     */
     suspend fun geocodeSearch(
         text: String,
-        apiKey: String,
         focusLon: Double? = null,
         focusLat: Double? = null,
         rectMinLon: Double? = null,
@@ -144,9 +146,11 @@ interface OrsClient {
         size: Int? = 10,
     ): GeocodeSearchResponse
 
-    /** Autocomplete endpoint returning suggestions for a partial query. */
+    /**
+     * Autocomplete endpoint returning suggestions for a partial query.
+     * Uses the API key supplied when creating the [OrsClient].
+     */
     suspend fun geocodeAutocomplete(
-        apiKey: String,
         text: String,
         focusLon: Double? = null,
         focusLat: Double? = null,
@@ -163,9 +167,11 @@ interface OrsClient {
         size: Int? = null,
     ): GeocodeSearchResponse
 
-    /** Structured forward geocoding using discrete address fields. */
+    /**
+     * Structured forward geocoding using discrete address fields.
+     * Uses the API key supplied when creating the [OrsClient].
+     */
     suspend fun geocodeStructured(
-        apiKey: String,
         address: String? = null,
         neighbourhood: String? = null,
         borough: String? = null,
@@ -189,9 +195,11 @@ interface OrsClient {
         size: Int? = null,
     ): GeocodeSearchResponse
 
-    /** Reverse geocoding for a single coordinate. */
+    /**
+     * Reverse geocoding for a single coordinate.
+     * Uses the API key supplied when creating the [OrsClient].
+     */
     suspend fun geocodeReverse(
-        apiKey: String,
         lon: Double,
         lat: Double,
         radiusKm: Double? = null,

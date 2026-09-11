@@ -25,14 +25,21 @@ import org.nitri.ors.domain.route.RouteResponse
 import org.nitri.ors.domain.snap.SnapGeoJsonResponse
 import org.nitri.ors.domain.snap.SnapRequest
 import org.nitri.ors.domain.snap.SnapResponse
+import org.nitri.ors.internal.api.OpenRouteServiceApi
 import org.nitri.ors.internal.restclient.OpenRouteServiceRestClient
 
 /**
  * Default implementation of [org.nitri.ors.OrsClient] using the Retrofit based
  * [OpenRouteServiceRestClient].
  */
-class DefaultOrsClient(apiKey: String, context: Context) : OrsClient {
-    private val api = OpenRouteServiceRestClient.create(apiKey, context)
+class DefaultOrsClient internal constructor(
+    private val apiKey: String,
+    private val api: OpenRouteServiceApi
+) : OrsClient {
+    constructor(apiKey: String, context: Context) : this(
+        apiKey = apiKey,
+        api = OpenRouteServiceRestClient.create(apiKey, context)
+    )
 
     /** @inheritDoc */
     override suspend fun getRoute(
@@ -166,7 +173,6 @@ class DefaultOrsClient(apiKey: String, context: Context) : OrsClient {
     /** @inheritDoc */
     override suspend fun geocodeSearch(
         text: String,
-        apiKey: String,
         focusLon: Double?,
         focusLat: Double?,
         rectMinLon: Double?,
@@ -204,7 +210,6 @@ class DefaultOrsClient(apiKey: String, context: Context) : OrsClient {
 
     /** @inheritDoc */
     override suspend fun geocodeAutocomplete(
-        apiKey: String,
         text: String,
         focusLon: Double?,
         focusLat: Double?,
@@ -241,7 +246,6 @@ class DefaultOrsClient(apiKey: String, context: Context) : OrsClient {
 
     /** @inheritDoc */
     override suspend fun geocodeStructured(
-        apiKey: String,
         address: String?,
         neighbourhood: String?,
         borough: String?,
@@ -292,7 +296,6 @@ class DefaultOrsClient(apiKey: String, context: Context) : OrsClient {
 
     /** @inheritDoc */
     override suspend fun geocodeReverse(
-        apiKey: String,
         lon: Double,
         lat: Double,
         radiusKm: Double?,
